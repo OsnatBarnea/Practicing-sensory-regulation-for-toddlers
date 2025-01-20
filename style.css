@@ -5,20 +5,12 @@ body, html {
     text-align: center;
     background-color: rgb(139, 180, 180);
     box-sizing: border-box;
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 [class*="col-"] {
     float: left;
     padding: 15px;
-}
-
-.row::after {
-    height: 100%;
-    margin: 0;
-    content: "";
-    clear: both;
-    display: table;
 }
 
 .col-1 {
@@ -33,11 +25,11 @@ body, html {
     width: 40%;
 }
 
-#buttons{
+#buttons, .colorButton {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 @font-face {
@@ -60,6 +52,10 @@ header {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 1500px;
+    height: 130px;
+
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 h1 {
@@ -68,7 +64,7 @@ h1 {
     padding-top: 25px;
 }
 
- .eraserDiv img{
+.eraserDiv img {
     height: 70px;
     margin-top: 1000px;
 }
@@ -82,7 +78,7 @@ h1 {
     font-size: 17px;
 }
 
-#footer{
+#footer {
     margin-top: 80px;
     text-align: left;
     font-family: Mihora;
@@ -90,23 +86,28 @@ h1 {
     font-size: 14px;
 }
 
- .eraserTag {
+.eraserTag {
     visibility: hidden;
 }
 
- .erase:hover+.eraserTag {
+.erase:hover + .eraserTag {
     visibility: visible;
-    display: inline-block; 
+    display: inline-block;
 }
 
-.colorButton img{
+.colorButton img {
     width: 50px;
-    transition: box-shadow 0.3s ease, border-radius 0.3s ease; 
- }
-
-.colorButton img{
+    transition: box-shadow 0.3s ease, border-radius 0.3s ease;
     margin-top: 10px;
     width: 50px;
+}
+
+.thickness {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
 }
 
 .thickness img {
@@ -114,40 +115,134 @@ h1 {
     margin-top: 10px;
 }
 
+.thickness img:hover {
+    cursor: pointer;
+}
+
 .colorButton:hover img {
-    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.6); 
-    transition: box-shadow 0.3s ease, border-radius 0.3s ease; 
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.6);
+    transition: box-shadow 0.3s ease, border-radius 0.3s ease;
     border-radius: 50%;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .colorButton span, .thickPen span, .eraserDiv span {
-  visibility: hidden; 
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.7); 
-  color: white; 
-  padding: 5px;
-  border-radius: 3px;
-  margin-top: 5px; 
-  font-size: 12px;
+    visibility: hidden;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    margin-top: 5px;
+    font-size: 12px;
 }
 
-.eraserDiv, .thickness{
-    margin-top: 50px;
+.eraserDiv, .thickness {
+    margin-top: 20px;
 }
 
-#pages{
+#pages {
     font-family: boldenvan;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
 }
 
-#pages>img {
-    height: 62px;
+#pages > img {
+    height: 55px;
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    padding: 2px;
     border-radius: 25%;
+    margin: 5px;
 }
 
-#mouseMaze:hover, #houseMaze:hover, #beeMaze:hover, #sunColoringPage:hover, #squirrelColoringPage:hover, #dogColoringPage:hover{
+#mouseMaze:hover, #houseMaze:hover, #beeMaze:hover, #sunColoringPage:hover, #squirrelColoringPage:hover, #dogColoringPage:hover {
     box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.6);
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .col-6 {
+        width: 100%;
+    }
+
+    #sensoryRegulation, #footer {
+        display: none;
+    }
+
+    header {
+        height: 200px;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        width: 100%;
+    }
+
+    #myCanvas {
+        width: 300px; 
+        height: auto; 
+    }
+
+    .thickness {
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-around;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .thickPen, .eraserDiv {
+        flex: 1; 
+        text-align: center;
+    }
+
+    #pages {
+        display: flex;
+        flex-wrap: nowrap; 
+        justify-content: center;
+        overflow-x: auto; 
+        gap: 2px; 
+    }
+
+    #pages-container {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        width: 100%; 
+        margin-top: 20px; 
+    }
+
+    #pages > img {
+        /* flex-shrink: 0;  */
+        gap: 2px;
+    }
+
+    .col-1, .col-2 {
+        width: auto; 
+        flex: 1;
+    }
+
+    .colorButton {
+        flex-direction: row; 
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #buttons {
+        display: flex;
+        flex-direction: row; 
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 }
