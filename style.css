@@ -223,7 +223,6 @@ h1 {
     }
 
     #pages > img {
-        /* flex-shrink: 0;  */
         gap: 2px;
     }
 
